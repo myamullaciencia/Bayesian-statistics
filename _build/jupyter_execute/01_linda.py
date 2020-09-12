@@ -1,8 +1,4 @@
-# Bite Size Bayes
-
-Copyright 2020 Allen B. Downey
-
-MIT License: https://opensource.org/licenses/MIT
+# Chapter 1
 
 # Load utils.py
 
