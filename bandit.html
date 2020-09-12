@@ -1,0 +1,728 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bite Size Bayes &#8212; My Jupyter Book</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction_to_bayesian.html">
+   Introduction to bayesian statistics
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_linda.html">
+   Bite Size Bayes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_bayes.html">
+   Bite Size Bayes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_cookie.html">
+   Bite Size Bayes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_dice.html">
+   Bite Size Bayes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_test.html">
+   Bite Size Bayes
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/bandit.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/bandit.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/bandit.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#review">
+   Review
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-bayesian-bandit-problem">
+   The Bayesian bandit problem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-prior">
+   The prior
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-likelihood-function">
+   The likelihood function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-bandits">
+   Multiple bandits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-bandits">
+   Bayesian Bandits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trying-it-out">
+   Trying it out
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="bite-size-bayes">
+<h1>Bite Size Bayes<a class="headerlink" href="#bite-size-bayes" title="Permalink to this headline">¶</a></h1>
+<p>Copyright 2020 Allen B. Downey</p>
+<p>License: <a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="review">
+<h2>Review<a class="headerlink" href="#review" title="Permalink to this headline">¶</a></h2>
+<p>In <a class="reference external" href="https://colab.research.google.com/github/AllenDowney/BiteSizeBayes/blob/master/12_binomial.ipynb">a previous notebook</a> we solved the Euro problem, which involved estimating the proportion of heads we get when we spin a coin on edge.</p>
+<p>We used the posterior distribution to test whether the coin is fair or biased, but the answer is not entirely satisfying because it depends on how we define “biased”.</p>
+<p>In general, this kind of hypothesis testing is not the best use of a posterior distribution because it does not answer the question we really care about.  For practical purposes, it is less useful to know <em>whether</em> a coin is biased and more useful to know <em>how</em> biased.</p>
+<p>In this notebook we solve the Bayesian bandit problem, which is similar in the sense that it involves estimating proportions, but different in the sense that we use the posterior distribution as part of a decision-making process.</p>
+</div>
+<div class="section" id="the-bayesian-bandit-problem">
+<h2>The Bayesian bandit problem<a class="headerlink" href="#the-bayesian-bandit-problem" title="Permalink to this headline">¶</a></h2>
+<p>Suppose you have several “one-armed bandit” slot machines, and there’s reason to think that they have different probabilities of paying off.</p>
+<p>Each time you play a machine, you either win or lose, and you can use the outcome to update your belief about the probability of winning.</p>
+<p>Then, to decide which machine to play next, you can use the “Bayesian bandit” strategy, explained below.</p>
+<p>First, let’s see how to do the update.</p>
+</div>
+<div class="section" id="the-prior">
+<h2>The prior<a class="headerlink" href="#the-prior" title="Permalink to this headline">¶</a></h2>
+<p>If we know nothing about the probability of wining, we can start with a uniform prior.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">decorate_bandit</span><span class="p">(</span><span class="n">title</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Labels the axes.</span>
+<span class="sd">    </span>
+<span class="sd">    title: string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Probability of winning&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PMF&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">prior</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">101</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">xs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prior</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">decorate_bandit</span><span class="p">(</span><span class="s1">&#39;Prior distribution&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bandit_7_0.png" src="_images/bandit_7_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="the-likelihood-function">
+<h2>The likelihood function<a class="headerlink" href="#the-likelihood-function" title="Permalink to this headline">¶</a></h2>
+<p>The likelihood function that computes the probability of an outcome (W or L) for a hypothetical value of x, the probability of winning (from 0 to 1).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Likelihood function for Bayesian bandit</span>
+<span class="sd">    </span>
+<span class="sd">    prior: Series that maps hypotheses to probabilities</span>
+<span class="sd">    data: string, either &#39;W&#39; or &#39;L&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">prior</span><span class="o">.</span><span class="n">index</span>
+    <span class="k">if</span> <span class="n">data</span> <span class="o">==</span> <span class="s1">&#39;W&#39;</span><span class="p">:</span>
+        <span class="n">prior</span> <span class="o">*=</span> <span class="n">xs</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">prior</span> <span class="o">*=</span> <span class="mi">1</span><span class="o">-</span><span class="n">xs</span>
+        
+    <span class="n">prior</span> <span class="o">/=</span> <span class="n">prior</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bandit</span> <span class="o">=</span> <span class="n">prior</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">update</span><span class="p">(</span><span class="n">bandit</span><span class="p">,</span> <span class="s1">&#39;W&#39;</span><span class="p">)</span>
+<span class="n">update</span><span class="p">(</span><span class="n">bandit</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">)</span>
+<span class="n">bandit</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">decorate_bandit</span><span class="p">(</span><span class="s1">&#39;Posterior distribution, 1 loss, 1 win&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bandit_10_0.png" src="_images/bandit_10_0.png" />
+</div>
+</div>
+<p><strong>Exercise 1:</strong> Suppose you play a machine 10 times and win once.  What is the posterior distribution of <span class="math notranslate nohighlight">\(x\)</span>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solution goes here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="multiple-bandits">
+<h2>Multiple bandits<a class="headerlink" href="#multiple-bandits" title="Permalink to this headline">¶</a></h2>
+<p>Now suppose we have several bandits and we want to decide which one to play.</p>
+<p>For this example, we have 4 machines with these probabilities:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actual_probs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.30</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">play</span></code> simulates playing one machine once and returns <code class="docutils literal notranslate"><span class="pre">W</span></code> or <code class="docutils literal notranslate"><span class="pre">L</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">random</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="c1"># count how many times we&#39;ve played each machine</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">flip</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return True with probability p.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">p</span>
+
+<span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Play machine i.</span>
+<span class="sd">    </span>
+<span class="sd">    returns: string &#39;W&#39; or &#39;L&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">counter</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">actual_probs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">flip</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;W&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;L&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s a test, playing machine 3 twenty times:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">play</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>W L L L W L L L W W L L W W W L W W L L 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now I’ll make four copies of the prior to represent our beliefs about the four machines.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beliefs</span> <span class="o">=</span> <span class="p">[</span><span class="n">prior</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This function displays four distributions in a grid.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">options</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">xticklabels</span><span class="o">=</span><span class="s1">&#39;invisible&#39;</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="s1">&#39;invisible&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="n">beliefs</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">beliefs</span><span class="p">):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">b</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Machine </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">beliefs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bandit_24_0.png" src="_images/bandit_24_0.png" />
+</div>
+</div>
+<p><strong>Exercise 2:</strong> Write a nested loop that plays each machine 10 times; then plot the posterior distributions.</p>
+<p>Hint: call <code class="docutils literal notranslate"><span class="pre">play</span></code> and then <code class="docutils literal notranslate"><span class="pre">update</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solution goes here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solution goes here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After playing each machine 10 times, we can summarize <code class="docutils literal notranslate"><span class="pre">beliefs</span></code> by printing the posterior mean and credible interval:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pmf_mean</span><span class="p">(</span><span class="n">pmf</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute the mean of a PMF.</span>
+<span class="sd">    </span>
+<span class="sd">    pmf: Series representing a PMF</span>
+<span class="sd">    </span>
+<span class="sd">    return: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pmf</span><span class="o">.</span><span class="n">index</span> <span class="o">*</span> <span class="n">pmf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp1d</span>
+
+<span class="k">def</span> <span class="nf">credible_interval</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="n">prob</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute the mean of a PMF.</span>
+<span class="sd">    </span>
+<span class="sd">    pmf: Series representing a PMF</span>
+<span class="sd">    prob: probability of the interval</span>
+<span class="sd">    </span>
+<span class="sd">    return: pair of float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># make the CDF</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">pmf</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">pmf</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+    
+    <span class="c1"># compute the probabilities</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">prob</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">ps</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">,</span> <span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">]</span>
+    
+    <span class="c1"># interpolate the inverse CDF</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">bounds_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                   <span class="n">fill_value</span><span class="o">=</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> 
+                   <span class="n">assume_sorted</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">interp</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">interp</span><span class="p">(</span><span class="n">ps</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">beliefs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pmf_mean</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="n">credible_interval</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5000000000000001 [0.0405 0.9495]
+0.5000000000000001 [0.0405 0.9495]
+0.5000000000000001 [0.0405 0.9495]
+0.5000000000000001 [0.0405 0.9495]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="bayesian-bandits">
+<h2>Bayesian Bandits<a class="headerlink" href="#bayesian-bandits" title="Permalink to this headline">¶</a></h2>
+<p>To get more information, we could play each machine 100 times, but while we are gathering data, we are not making good use of it.  The kernel of the Bayesian Bandits algorithm is that it collects and uses data at the same time.  In other words, it balances exploration and exploitation.</p>
+<p>The following function chooses among the machines so that the probability of choosing each machine is proportional to its “probability of superiority”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pmf_choice</span><span class="p">(</span><span class="n">pmf</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Draw a random sample from a PMF.</span>
+<span class="sd">    </span>
+<span class="sd">    pmf: Series representing a PMF</span>
+<span class="sd">    </span>
+<span class="sd">    returns: quantity from PMF</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">pmf</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">pmf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">choose</span><span class="p">(</span><span class="n">beliefs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Use the Bayesian bandit strategy to choose a machine.</span>
+<span class="sd">    </span>
+<span class="sd">    Draws a sample from each distributions.</span>
+<span class="sd">    </span>
+<span class="sd">    returns: index of the machine that yielded the highest value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ps</span> <span class="o">=</span> <span class="p">[</span><span class="n">pmf_choice</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">beliefs</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">ps</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This function chooses one value from the posterior distribution of each machine and then uses <code class="docutils literal notranslate"><span class="pre">argmax</span></code> to find the index of the machine that chose the highest value.</p>
+<p>Here’s an example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">choose</span><span class="p">(</span><span class="n">beliefs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 3:</strong> Putting it all together, fill in the following function to choose a machine, play once, and update <code class="docutils literal notranslate"><span class="pre">beliefs</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">choose_play_update</span><span class="p">(</span><span class="n">beliefs</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Chose a machine, play it, and update beliefs.</span>
+<span class="sd">    </span>
+<span class="sd">    beliefs: list of Pmf objects</span>
+<span class="sd">    verbose: Boolean, whether to print results</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># choose a machine</span>
+    <span class="n">machine</span> <span class="o">=</span> <span class="n">____</span>
+    
+    <span class="c1"># play it</span>
+    <span class="n">outcome</span> <span class="o">=</span> <span class="n">____</span>
+    
+    <span class="c1"># update beliefs</span>
+    <span class="n">update</span><span class="p">(</span><span class="n">____</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">outcome</span><span class="p">,</span> <span class="n">beliefs</span><span class="p">[</span><span class="n">machine</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solution goes here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s an example</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">choose_play_update</span><span class="p">(</span><span class="n">beliefs</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">24</span><span class="o">-</span><span class="mi">5528897</span><span class="n">d2495</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">choose_play_update</span><span class="p">(</span><span class="n">beliefs</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nn">&lt;ipython-input-22-cab5d37a3d49&gt;</span> in <span class="ni">choose_play_update</span><span class="nt">(beliefs, verbose)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span><span class="s2">     # choose a machine</span>
+<span class="ne">----&gt; </span><span class="mi">8</span><span class="s2">     machine = ____</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span><span class="s2">     # play it</span>
+
+<span class="ne">NameError</span>: name &#39;____&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="trying-it-out">
+<h2>Trying it out<a class="headerlink" href="#trying-it-out" title="Permalink to this headline">¶</a></h2>
+<p>Let’s start again with a fresh set of machines and an empty <code class="docutils literal notranslate"><span class="pre">Counter</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beliefs</span> <span class="o">=</span> <span class="p">[</span><span class="n">prior</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we run the bandit algorithm 100 times, we can see how <code class="docutils literal notranslate"><span class="pre">beliefs</span></code> gets updated:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_plays</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_plays</span><span class="p">):</span>
+    <span class="n">choose_play_update</span><span class="p">(</span><span class="n">beliefs</span><span class="p">)</span>
+    
+<span class="n">plot</span><span class="p">(</span><span class="n">beliefs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can summarize <code class="docutils literal notranslate"><span class="pre">beliefs</span></code> by printing the posterior mean and credible interval:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">beliefs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pmf_mean</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="n">credible_interval</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The credible intervals usually contain the true values (0.1, 0.2, 0.3, and 0.4).</p>
+<p>The estimates are still rough, especially for the lower-probability machines.  But that’s a feature, not a bug: the goal is to play the high-probability machines most often.  Making the estimates more precise is a means to that end, but not an end itself.</p>
+<p>Let’s see how many times each machine got played.  If things go according to plan, the machines with higher probabilities should get played more often.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">machine</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">counter</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">machine</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 4:</strong>  Go back and run this section again with a different value of <code class="docutils literal notranslate"><span class="pre">num_play</span></code> and see how it does.</p>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>The algorithm I presented in this notebook is called <a class="reference external" href="https://en.wikipedia.org/wiki/Thompson_sampling">Thompson sampling</a>.  It is an example of a general strategy called <a class="reference external" href="https://wiki.lesswrong.com/wiki/Bayesian_decision_theory">Bayesian decision theory</a>, which is the idea of using a posterior distribution as part of a decision-making process, usually by choosing an action that minimizes the costs we expect on average (or maximizes a benefit).</p>
+<p>In my opinion, this strategy is the biggest advantage of Bayesian methods over classical statistics.  When we represent knowledge in the form of probability distributions, Bayes’s theorem tells us how to change our beliefs as we get more data, and Bayesian decisions theory tells us how to make that knowledge actionable.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
