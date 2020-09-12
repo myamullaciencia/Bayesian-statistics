@@ -1,0 +1,886 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bite Size Bayes &#8212; My Jupyter Book</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction_to_bayesian.html">
+   Introduction to bayesian statistics
+  </a>
+ </li>
+</ul>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_linda.html">
+   Bite Size Bayes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_bayes.html">
+   Bite Size Bayes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_cookie.html">
+   Bite Size Bayes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_dice.html">
+   Bite Size Bayes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_test.html">
+   Bite Size Bayes
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/clean_gss_bayes.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/clean_gss_bayes.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/clean_gss_bayes.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feminist">
+   feminist
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#polviews">
+   polviews
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#partyid">
+   partyid
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#race">
+   race
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sex">
+   sex
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#age">
+   age
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#indus10">
+   indus10
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#select-subset">
+   Select subset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#save-the-data">
+   Save the data
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="bite-size-bayes">
+<h1>Bite Size Bayes<a class="headerlink" href="#bite-size-bayes" title="Permalink to this headline">¶</a></h1>
+<p>Copyright 2020 Allen B. Downey</p>
+<p>MIT License: https://opensource.org/licenses/MIT</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The dataset includes variables I selected from the General Social Survey, available from this project on the GSS site: https://gssdataexplorer.norc.org/projects/54786</p>
+<p>I also store the data in the GitHub repository for this book; the following cell downloads it, if necessary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the data file</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;gss_bayes.tar.gz&#39;</span><span class="p">):</span>
+    <span class="o">!</span>wget https://github.com/AllenDowney/BiteSizeBayes/raw/master/gss_bayes.tar.gz
+    <span class="o">!</span>tar -xzf gss_bayes.tar.gz
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2020-09-12 08:12:43--  https://github.com/AllenDowney/BiteSizeBayes/raw/master/gss_bayes.tar.gz
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Resolving github.com (github.com)... 13.234.176.102
+Connecting to github.com (github.com)|13.234.176.102|:443... connected.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>302 Found
+Location: https://raw.githubusercontent.com/AllenDowney/BiteSizeBayes/master/gss_bayes.tar.gz [following]
+--2020-09-12 08:12:44--  https://raw.githubusercontent.com/AllenDowney/BiteSizeBayes/master/gss_bayes.tar.gz
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 151.101.152.133
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|151.101.152.133|:443... connected.
+HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200 OK
+Length: 1466452 (1.4M) [application/octet-stream]
+Saving to: ‘gss_bayes.tar.gz’
+
+
+gss_bayes.tar.gz      0%[                    ]       0  --.-KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gss_bayes.tar.gz    100%[===================&gt;]   1.40M  --.-KB/s    in 0.03s   
+
+2020-09-12 08:12:44 (48.8 MB/s) - ‘gss_bayes.tar.gz’ saved [1466452/1466452]
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">utils.py</span></code> provides <code class="docutils literal notranslate"><span class="pre">read_stata</span></code>, which reads the data from the Stata format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="n">read_stata</span>
+
+<span class="n">gss</span> <span class="o">=</span> <span class="n">read_stata</span><span class="p">(</span><span class="s1">&#39;GSS.dct&#39;</span><span class="p">,</span> <span class="s1">&#39;GSS.dat&#39;</span><span class="p">)</span>
+<span class="n">gss</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id_&#39;</span><span class="p">:</span> <span class="s1">&#39;caseid&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">gss</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">gss</span><span class="p">[</span><span class="s1">&#39;caseid&#39;</span><span class="p">]</span>
+<span class="n">gss</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>relig</th>
+      <th>srcbelt</th>
+      <th>region</th>
+      <th>adults</th>
+      <th>wtssall</th>
+      <th>ballot</th>
+      <th>cohort</th>
+      <th>feminist</th>
+      <th>polviews</th>
+      <th>partyid</th>
+      <th>race</th>
+      <th>sex</th>
+      <th>educ</th>
+      <th>age</th>
+      <th>indus10</th>
+      <th>occ10</th>
+      <th>caseid</th>
+      <th>realinc</th>
+    </tr>
+    <tr>
+      <th>caseid</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1972</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0.4446</td>
+      <td>0</td>
+      <td>1949</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>16</td>
+      <td>23</td>
+      <td>5170</td>
+      <td>520</td>
+      <td>1</td>
+      <td>18951.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1972</td>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>0.8893</td>
+      <td>0</td>
+      <td>1902</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>10</td>
+      <td>70</td>
+      <td>6470</td>
+      <td>7700</td>
+      <td>2</td>
+      <td>24366.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1972</td>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>0.8893</td>
+      <td>0</td>
+      <td>1924</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>2</td>
+      <td>12</td>
+      <td>48</td>
+      <td>7070</td>
+      <td>4920</td>
+      <td>3</td>
+      <td>24366.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1972</td>
+      <td>5</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>0.8893</td>
+      <td>0</td>
+      <td>1945</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>17</td>
+      <td>27</td>
+      <td>5170</td>
+      <td>800</td>
+      <td>4</td>
+      <td>30458.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1972</td>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>0.8893</td>
+      <td>0</td>
+      <td>1911</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>12</td>
+      <td>61</td>
+      <td>6680</td>
+      <td>5020</td>
+      <td>5</td>
+      <td>50763.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">replace_invalid</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">bad_vals</span><span class="p">,</span> <span class="n">replacement</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Replace invalid values with NaN</span>
+
+<span class="sd">    Modifies series in place.</span>
+
+<span class="sd">    series: Pandas Series</span>
+<span class="sd">    bad_vals: list of values to replace</span>
+<span class="sd">    replacement: value to replace</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">series</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">bad_vals</span><span class="p">,</span> <span class="n">replacement</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following cell replaces invalid responses for the variables we’ll use.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">replace_invalid</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;feminist&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="n">replace_invalid</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;polviews&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="n">replace_invalid</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;partyid&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="n">replace_invalid</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;indus10&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9997</span><span class="p">,</span> <span class="mi">9999</span><span class="p">])</span>
+<span class="n">replace_invalid</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">99</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make a series of values and the number of times they appear.</span>
+<span class="sd">    </span>
+<span class="sd">    series: Pandas Series</span>
+<span class="sd">    </span>
+<span class="sd">    returns: Pandas Series</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">series</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="feminist">
+<h2>feminist<a class="headerlink" href="#feminist" title="Permalink to this headline">¶</a></h2>
+<p>https://gssdataexplorer.norc.org/variables/1698/vshow</p>
+<p>This question was only asked during one year, so we’re limited to a small number of responses.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;feminist&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0      298
+2.0     1083
+NaN    61085
+Name: feminist, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="polviews">
+<h2>polviews<a class="headerlink" href="#polviews" title="Permalink to this headline">¶</a></h2>
+<p>https://gssdataexplorer.norc.org/variables/178/vshow</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;polviews&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0     1560
+2.0     6236
+3.0     6754
+4.0    20515
+5.0     8407
+6.0     7876
+7.0     1733
+NaN     9385
+Name: polviews, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="partyid">
+<h2>partyid<a class="headerlink" href="#partyid" title="Permalink to this headline">¶</a></h2>
+<p>https://gssdataexplorer.norc.org/variables/141/vshow</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;partyid&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0     9999
+1.0    12942
+2.0     7485
+3.0     9474
+4.0     5462
+5.0     9661
+6.0     6063
+7.0      995
+NaN      385
+Name: partyid, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="race">
+<h2>race<a class="headerlink" href="#race" title="Permalink to this headline">¶</a></h2>
+<p>https://gssdataexplorer.norc.org/variables/82/vshow</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;race&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1    50340
+2     8802
+3     3324
+Name: race, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sex">
+<h2>sex<a class="headerlink" href="#sex" title="Permalink to this headline">¶</a></h2>
+<p>https://gssdataexplorer.norc.org/variables/81/vshow</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1    27562
+2    34904
+Name: sex, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="age">
+<h2>age<a class="headerlink" href="#age" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18.0     219
+19.0     835
+20.0     870
+21.0     987
+22.0    1042
+        ... 
+86.0     172
+87.0     143
+88.0     113
+89.0     335
+NaN      221
+Name: age, Length: 73, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="indus10">
+<h2>indus10<a class="headerlink" href="#indus10" title="Permalink to this headline">¶</a></h2>
+<p>https://gssdataexplorer.norc.org/variables/17/vshow</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">values</span><span class="p">(</span><span class="n">gss</span><span class="p">[</span><span class="s1">&#39;indus10&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>170.0      458
+180.0      444
+190.0       37
+270.0       69
+280.0       36
+          ... 
+9770.0      13
+9780.0       8
+9790.0      53
+9870.0      22
+NaN       4704
+Name: indus10, Length: 271, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="select-subset">
+<h2>Select subset<a class="headerlink" href="#select-subset" title="Permalink to this headline">¶</a></h2>
+<p>Here’s the subset of the data with valid responses for the variables we’ll use.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">varnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;polviews&#39;</span><span class="p">,</span> <span class="s1">&#39;partyid&#39;</span><span class="p">,</span> <span class="s1">&#39;indus10&#39;</span><span class="p">]</span>
+
+<span class="n">valid</span> <span class="o">=</span> <span class="n">gss</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">varnames</span><span class="p">)</span>
+<span class="n">valid</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(49290, 19)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span> <span class="o">=</span> <span class="n">valid</span><span class="p">[</span><span class="n">varnames</span><span class="p">]</span>
+<span class="n">subset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>age</th>
+      <th>sex</th>
+      <th>polviews</th>
+      <th>partyid</th>
+      <th>indus10</th>
+    </tr>
+    <tr>
+      <th>caseid</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1974</td>
+      <td>21.0</td>
+      <td>1</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>4970.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1974</td>
+      <td>41.0</td>
+      <td>1</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>9160.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1974</td>
+      <td>58.0</td>
+      <td>2</td>
+      <td>6.0</td>
+      <td>1.0</td>
+      <td>2670.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1974</td>
+      <td>30.0</td>
+      <td>1</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>6870.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1974</td>
+      <td>48.0</td>
+      <td>1</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>7860.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="save-the-data">
+<h2>Save the data<a class="headerlink" href="#save-the-data" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;gss_bayes.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls -l gss_bayes.csv
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-rw-rw-r--. 1 ec2-user ec2-user 1546290 Sep 12 08:12 gss_bayes.csv
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
